@@ -26,4 +26,3 @@ create_star_index:
     time: "02:00:00"
     mem: 30g
     output: "logs/cluster/{rule}.out"
-    error: "logs/cluster/{rule}.err"

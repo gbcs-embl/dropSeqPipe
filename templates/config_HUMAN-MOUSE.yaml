@@ -1,0 +1,47 @@
+LOCAL:
+    temp-directory: /scratch/girardot/dropSeqPipe/tmp
+    dropseq-wrapper: /g/funcgen/girardot/public/software/Drop-seq_tools/Drop-seq_tools-1.13/drop-seq-tools-wrapper.sh
+    memory: 4g
+META:
+    species:
+        - HUMAN_ZsGreen
+        - MOUSE
+    ratio: 0.2
+    reference-file: Homo_sapiens.GRCh38.dna.primary_assembly.ZsGreen.fasta
+    annotation-file: Homo_sapiens.GRCh38.90.ZsGreen.gtf
+    reference-directory: /scratch/girardot/dropSeqPipe/genome/Homo_sapiens.GRCh38.90.ZsGreen
+FILTER:
+    5-prime-smart-adapter: AAGCAGTGGTATCAACGCAGAGTGAATGGG
+    cell-barcode:
+        start: 1
+        end: 12
+        min-quality: 10
+        num-below-quality: 1
+    UMI-barcode:
+        start: 13
+        end: 20
+        min-quality: 10
+        num-below-quality: 1
+    trimmomatic:
+        adapters-file: TruSeq3-PE.fa
+        LEADING: 3
+        TRAILING: 3
+        SLIDINGWINDOW:
+            windowSize: 4
+            requiredQuality: 20
+        MINLEN: 20
+        ILLUMINACLIP:
+            seedMismatches: 2
+            palindromeClipThreshold: 30
+            simpleClipThreshold: 10
+MAPPING:
+    STAR:
+        outFilterMismatchNmax: 10
+        outFilterMismatchNoverLmax: 0.3
+        outFilterMismatchNoverReadLmax: 1
+        outFilterMatchNmin: 0
+        outFilterMatchNminOverLread: 0.66
+        outFilterScoreMinOverLread: 0.66
+EXTRACTION:
+    UMI-edit-distance: 0
+    minimum-counts-per-UMI: 1

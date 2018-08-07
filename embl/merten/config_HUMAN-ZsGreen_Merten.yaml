@@ -1,17 +1,15 @@
 LOCAL:
-    temp-directory: /scratch/girardot/dropSeqPipe/tmp
-    dropseq-wrapper: /g/funcgen/girardot/public/software/Drop-seq_tools/Drop-seq_tools-1.13/drop-seq-tools-wrapper.sh
+    temp-directory: /scratch/girardot/dropSeqPipe/WF_HUMAN_with_ZsGreen/tmp/
     memory: 4g
 META:
     species:
         - HUMAN_ZsGreen
-        - MOUSE
     ratio: 0.2
-    reference-file: Homo_sapiens.GRCh38.dna.primary_assembly.ZsGreen.fasta
-    annotation-file: Homo_sapiens.GRCh38.90.ZsGreen.gtf
+    reference-file: HUMAN_ZsGreen.fasta
+    annotation-file: HUMAN_ZsGreen.gtf
     reference-directory: /scratch/girardot/dropSeqPipe/genome/Homo_sapiens.GRCh38.90.ZsGreen
 FILTER:
-    5-prime-smart-adapter: AAGCAGTGGTATCAACGCAGAGTGAATGGG
+    5-prime-smart-adapter: AAGCAGTGGTATCAACGCAGAGTAC
     cell-barcode:
         start: 1
         end: 12
@@ -23,7 +21,7 @@ FILTER:
         min-quality: 10
         num-below-quality: 1
     trimmomatic:
-        adapters-file: TruSeq3-PE.fa
+        adapters-file: templates/custom_adapters_Nextera_Merten.fa
         LEADING: 3
         TRAILING: 3
         SLIDINGWINDOW:
